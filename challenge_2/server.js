@@ -1,11 +1,23 @@
-var express = require('express');
-var app = express();
-//app.use(bodyParser.json());
-var path = require('path');
 
-app.get('/', function(req, res) {
-  res.send('hello world from express');
+const express = require('express');
+const path = require('path');
+const parser = require('body-parser');
+const morgan = require('morgan');
+
+app = express();
+app.use(express.static('./client'));
+
+app.use(parser.json());
+app.use(morgan('dev'));
+
+port = 3000;
+app.listen(port);
+console.log(`CSV istening on port ${port}...`);
+
+app.get('/', (req, res) => {
+  res.render(path.join(__dirname, './client/index.html'));
 });
-app.use(express.static('client'));
 
-app.listen(3000, () => {console.log('listening on port 3000')});
+app.post('/upload_json', (req, res) => {
+	console.log(req.body)
+})
