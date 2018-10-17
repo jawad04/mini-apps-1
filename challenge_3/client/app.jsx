@@ -1,134 +1,179 @@
 
-/**********COMPONENTS*********************
+// /**********COMPONENTS*********************
 
-F1 collects name, email, and password for account creation.
-F2 collects ship to address (line 1, line 2, city, state, zip code) and phone number.
-F3 collects credit card #, expiry date, CVV, and billing zip code.
+// F1 collects name, email, and password for account creation.
+// F2 collects ship to address (line 1, line 2, city, state, zip code) and phone number.
+// F3 collects credit card #, expiry date, CVV, and billing zip code.
+// */
 
-*/
 
 
-/**************** ACCOUNT COMPONENT ***********************/
-var Account = () => (
-  <form>
+// /**************** ACCOUNT COMPONENT ***********************/
+const Account = props => (
+  <div>
+  <h1> Account Infromation </h1>
+    <form>
     <label>
       Name:
-      <input type="text"/>
-    </label>
-    <br/>
-    <label>
+      <input type='text' name='name' onChange={props.handle}/>
+      </label>
+      <br/>
+      <label>
       Email:
-      <input type="email"/>
-    </label>
-    <br/>
-    <label>
-      Pasword:
-      <input type="password"/>
-    </label>
-    <br/>
-      <input type="submit" value="Submit" />
-  </form>
+      <input type='email' name='email' onChange={props.handle}/>
+      </label>
+      <br/>
+      <label>
+      Password:
+      <input type='password' name='password' onChange={props.handle}/>
+      </label>
+      <br/>
+    </form>
+    <button className='next' onClick={props.handleClick}>Next</button>
+  </div>
 );
 
-/**************** ACCOUNT COMPONENT ***********************/
-var Address = () => (
-  <form> 
-    <label>
+
+// /**************** ACCOUNT COMPONENT ***********************/
+const Address = props => (
+  <div>
+  <h1> Address Information </h1>
+    <form>
+      <label>
       Line1:
-      <input type="text"/>
-    </label>
-    <br/>
-    <label>
+      <input type='text' name='line1' onChange={props.handle}/>
+      </label>
+      <br/>
+      <label>
       Line2:
-      <input type="text"/>
-    </label>
-    <br/>
-    <label>
+      <input type='text' name='line2' onChange={props.handle}/>
+      </label>
+      <br/>
+      <label>
       City:
-      <input type="text"/>
-    </label>
-    <br/>
-    <label>
+      <input type='text' name='city' onChange={props.handle}/>
+      </label>
+      <br/>
+      <label>
       State:
-      <input type="tex"/>
-    </label>
-    <br/>
-    <label>
-      Zip code:
-      <input type="number"/>
-    </label>
-    <br/>
-    <label>
-      <input type="phone"/>
-    </label>
-    <br/>
-      <input type="submit" value="Submit"/>
-  </form>
+      <input type='text' name='state' onChange={props.handle}/>
+      </label>
+      <br/>
+      <label>
+      ZipCode:
+      <input type='number' name='zip' onChange={props.handle}/>
+      </label>
+      <br/>
+      <label>
+      Phone:
+      <input type='number' name='phone' onChange={props.handle}/>
+      </label>
+      <br/>
+    </form>
+    <button className='next' onClick={props.handleClick}>Next</button>
+  </div>
+);
+
+// /******************** PAYMENT COMPONENT **********************/
+const Payment = props => (
+  <div>
+  <h1> Payment </h1>
+    <form>
+      <label>
+      Credit Card:
+      <input type='number' name='creditCard' onChange={props.handle}/>
+      </label>
+      <br/>
+      <label>
+      Expiration Date:
+      <input type='number' name='expDate' onChange={props.handle}/>
+      </label>
+      <br/>
+      <label>
+      CVV:
+      <input type='number' name='CVV' onChange={props.handle}/>
+      </label>
+      <br/>
+      <label>
+      Billing Zip:
+      <input type='number' name='billingZip' onChange={props.handle}/>
+      </label>
+      <br/>
+    </form>
+    <button className='next' onClick={props.handleClick}>Next</button>
+  </div>
+);
+
+// /******************** PURCHASE COMPONENT **********************/
+const Purchase = props => (
+	<div>
+	<div> <h1> Finish Payment</h1></div>
+  <button className='purchase' onClick={props.handleClick}>Purchase</button>
+  </div>
 );
 
 
-/******************** PAYMENT **********************/
-
-var Payment = () => (
-  <form>
-    <div class="form-group owner">
-        <label for="owner">Owner</label>
-        <input type="text" class="form-control" id="owner"/>
-    </div>
-    <div class="form-group CVV">
-        <label for="cvv">CVV</label>
-        <input type="text" class="form-control" id="cvv"/>
-    </div>
-    <div class="form-group" id="card-number-field">
-        <label for="cardNumber">Card Number</label>
-        <input type="text" class="form-control" id="cardNumber"/>
-    </div>
-    <div class="form-group" id="expiration-date">
-        <label>Expiration Date</label>
-        <select>
-            <option value="01">January</option>
-            <option value="02">February </option>
-            <option value="03">March</option>
-            <option value="04">April</option>
-            <option value="05">May</option>
-            <option value="06">June</option>
-            <option value="07">July</option>
-            <option value="08">August</option>
-            <option value="09">September</option>
-            <option value="10">October</option>
-            <option value="11">November</option>
-            <option value="12">December</option>
-        </select>
-        <select>
-            <option value="16"> 2016</option>
-            <option value="17"> 2017</option>
-            <option value="18"> 2018</option>
-            <option value="19"> 2019</option>
-            <option value="20"> 2020</option>
-            <option value="21"> 2021</option>
-        </select>
-    </div>
-    <div class="form-group" id="pay-now">
-        <button type="submit" class="btn btn-default" id="confirm-purchase">Confirm</button>
-    </div>
-  </form>
+// /******************** CHECKOUT COMPONENT **********************/
+const Checkout = props => (
+  <div>
+  <div>
+  <h1> Start </h1>
+  </div>
+  <button className='checkout' onClick={props.handleClick}>Checkout</button>
+  </div>
 );
 
-/*************** MAIN APP ***************/
+
+// /*************** MAIN APP ***************/
 class App extends React.Component {
-	constructor(props) {
-		super(props);
-	}
-	
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0,
+      name: '',
+      email: '',
+      password: '',
+      line1: '',
+      line2: '',
+      city: '',
+      state: '',
+      zipCode: '',
+      phone: '',
+      creditCard: '',
+      expDate: '',
+      CVV: '',
+      billingZip: ''
+    };
+    this.nextPage = this.nextPage.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+  handleChange(e) {
+    this.setState({[e.target.name]: e.target.value});
+  }
+  nextPage() {
+    this.setState({count: this.state.count + 1});
+  }
+  handlePage() {
+    if (this.state.count === 0) {
+      return (<Checkout handleClick={this.nextPage}/>);
+    } else if (this.state.count === 1) {
+      return (<Account handleClick={this.nextPage} handle={this.handleChange}/>);
+    } else if (this.state.count === 2) {
+      return (<Address handleClick={this.nextPage} handle={this.handleChange}/>);
+    } else if (this.state.count === 3) {
+      return (<Payment handleClick={this.nextPage} handle={this.handleChange}/>);
+    } else if (this.state.count === 4) {
+      return (<Purchase handleClick={this.nextPage}/>);
+    }else {
+      // this.setState({page: 0});
+      this.state.count = 0;
+      return (<Checkout handleClick={this.nextPage}/>);
+    }
+  }
 	render() {
-	  return (
-	  	<div> 
-	  	<Payment/>
-	  	</div>
-
-	  )
-	}
+    return (this.handlePage());
+  }
 }
 
 ReactDOM.render(<App/>, document.getElementById('app'));
+
