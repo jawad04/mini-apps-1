@@ -1,4 +1,5 @@
 
+/****************SERVER********************/
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
@@ -8,11 +9,12 @@ const parser = new Parser();
 const fs = require('fs');
 const multer = require('multer');
 
+// midleware
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(express.static(path.join(__dirname, './client')));
 app.use(multer().single('text'));
-
+//routes
 app.post('/upload_json', (req, res) => {
 	console.log(req.file.buffer.toString());
 	var json = JSON.parse(req.file.buffer.toString());

@@ -6,9 +6,31 @@
 </head>
 <body>
   <h1>CSV FORM GENERATOR</h1>
-  <form method="POST" action="/upload_json">
-    <textarea name="input-text" cols="40" rows="5" placeholder="Your text here"></textarea>
+  <div>
+  <form method="POST" action="/upload_json" enctype="multipart/form-data">
+<!--     <textarea name="text" cols="40" rows="7" placeholder="Your text here"></textarea>
+ -->    <input type="file" name="text" />
     <input type="submit" value="submit">
   </form>
+</div>
 </body>
+<script src="app.js"></script>
 </html>
+
+
+
+<!-- <!DOCTYPE HTML>
+<html>
+    <head>
+        <title>CSV Report Generator</title>
+    </head>
+    <body>
+        <form action="/csv" method="post" id="getJson" enctype="multipart/form-data">
+            <textarea name="text" id="json-field"></textarea>
+            <input type="file" name="text" />
+            <input type="submit"/>
+        </form>
+    </body>
+    <script src="app.js"></script>
+</html>
+ -->
