@@ -1,13 +1,9 @@
 
 // /**********COMPONENTS*********************
-
 // F1 collects name, email, and password for account creation.
 // F2 collects ship to address (line 1, line 2, city, state, zip code) and phone number.
 // F3 collects credit card #, expiry date, CVV, and billing zip code.
 // */
-
-
-
 // /**************** ACCOUNT COMPONENT ***********************/
 const Account = props => (
   <div>
@@ -34,7 +30,7 @@ const Account = props => (
 );
 
 
-// /**************** ACCOUNT COMPONENT ***********************/
+// /**************** ADDRESS COMPONENT ***********************/
 const Address = props => (
   <div>
   <h1> Address Information </h1>
@@ -117,7 +113,7 @@ const Purchase = props => (
 const Checkout = props => (
   <div>
   <div>
-  <h1> Start </h1>
+  <h1> Checkout </h1>
   </div>
   <button className='checkout' onClick={props.handleClick}>Checkout</button>
   </div>
@@ -147,6 +143,31 @@ class App extends React.Component {
     this.nextPage = this.nextPage.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
+ 
+componentDidMount() {
+		$.ajax('/checkout', {
+			success: (data) => {
+			this.setState({
+  			  count: data.count,
+		      name: data.name,
+		      email: data.email,
+		      password: data.password,
+		      line1: data.line1,
+		      line2: data.line2,
+		      city: data.city,
+		      state: data.state,
+		      zipCode: data.zipCode,
+		      phone: data.phone,
+		      creditCard: data.creditCard,
+		      expDate: data.expDate,
+		      CVV: data.CVV,
+		      billingZip: data.billingZip
+  			})
+		  }
+		})
+	}
+
+
   handleChange(e) {
     this.setState({[e.target.name]: e.target.value});
   }
@@ -169,6 +190,7 @@ class App extends React.Component {
       this.state.count = 0;
       return (<Checkout handleClick={this.nextPage}/>);
     }
+    console.log(this.state);
   }
 	render() {
     return (this.handlePage());
